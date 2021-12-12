@@ -1,0 +1,69 @@
+﻿<h2>Register</h2>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="form-group">
+        <label for="Name"> Name</label>
+        <input type="text" formControlName="Name" class="form-control" [ngClass]="{ 'is-invalid': f.Name.touched && f.Name.errors }" />
+        <div *ngIf="f.Name.touched && f.Name.errors" class="invalid-feedback">
+            <div *ngIf="f.Name.errors.required"> Name is required</div>
+        </div>
+    </div>
+    <!-- <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': f.Balance.touched && f.lastName.errors }" />
+        <div *ngIf="f.Balance.touched && f.lastName.errors" class="invalid-feedback">
+            <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+        </div> -->
+    <!-- </div> -->
+    <div class="form-group">
+        <label for="Mobile">Mobile</label>
+        <input type="number" formControlName="Mobile" class="form-control" [ngClass]="{ 'is-invalid': f.Mobile.touched  && f.Mobile.errors }" />
+        <div *ngIf="f.Mobile.touched && f.Mobile.errors" class="invalid-feedback">
+            <div *ngIf="f.Mobile.errors.required">Mobile number is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Password">Password</label>
+        <input type="Password" formControlName="Password" class="form-control" [ngClass]="{ 'is-invalid': f.Password.touched  && f.Password.errors }" />
+        <div *ngIf="f.Password.touched && f.Password.errors" class="invalid-feedback">
+            <div *ngIf="f.Password.errors.required">Password is required</div>
+            <div *ngIf="f.Password.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Ifsccode"> Ifsccode</label>
+        <input type="text" formControlName="Ifsccode" class="form-control" [ngClass]="{ 'is-invalid': f.Ifsccode.touched  && f.Ifsccode.errors }" />
+        <div *ngIf="f.Ifsccode.touched && f.Ifsccode.errors" class="invalid-feedback">
+            <div *ngIf="f.Ifsccode.errors.required"> Ifsccode is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Accountno"> Accountno</label>
+        <input type="number" formControlName="Accountno" class="form-control" [ngClass]="{ 'is-invalid': f.Accountno.touched  && f.Accountno.errors }" />
+        <div *ngIf="f.Accountno.touched && f.Accountno.errors" class="invalid-feedback">
+            <div *ngIf="f.Accountno.errors.required">account no is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Bankname"> Bankname</label>
+        <input type="text" formControlName="Bankname" class="form-control" [ngClass]="{ 'is-invalid': f.Bankname.touched  && f.Bankname.errors }" />
+        <div *ngIf="f.Bankname.touched && f.Bankname.errors" class="invalid-feedback">
+            <div *ngIf="f.Bankname.errors.required">Bankname is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Balance"> Balance</label>
+        <input type="number" formControlName="Balance" class="form-control" [ngClass]="{ 'is-invalid': f.Balance.touched  && f.Balance.errors }" />
+        <div *ngIf="f.Balance.touched && f.Balance.errors" class="invalid-feedback">
+            <div *ngIf="f.Balance.errors.required">Balance is required</div>
+        </div>
+    </div>
+  
+     <div class="form-group">
+        <button [disabled]="loading || !registerForm.valid" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Register
+        </button>
+        <a routerLink="/login" class="btn btn-link">Cancel</a>
+    </div> 
+    
+</form>
