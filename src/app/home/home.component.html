@@ -1,2 +1,15 @@
-﻿<h1>Hi {{cUser.name}}!</h1>
-<p>You're logged in with Angular 8!!</p>
+﻿
+<h1 *ngIf="cUser && cUser.name">Hi {{cUser.name}}!</h1>
+<p>Welcome to EzPay App</p>
+<!-- <img
+alt="logo"
+src="/assets/images.jpg"
+class="wallet"
+/> -->
+
+<img src="/assets/images.jpg" alt="">
+
+<!-- <router-outlet></router-outlet> 
+button show balance
+balance show
+-->
