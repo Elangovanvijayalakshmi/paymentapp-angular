@@ -43,4 +43,25 @@ export class AuthenticationService {
         this.currentUserSubject.next(null);
         this.cuser= null;
     }
+
+    showbalance() {
+        // let payload = {
+        //     "walletid":JSON.parse(localStorage.getItem("currentUser"))["wallet_id"]
+        // }
+        let custid = JSON.parse(localStorage.getItem("currentUser"))["custid"];
+        return this.http.get<any>(`${config.apiUrl}/app/wallet/getbycustomerid/${custid}`);
+    }
+    listbene(){
+        let custid = JSON.parse(localStorage.getItem("currentUser"))["custid"];
+        return this.http.get<any>(`${config.apiUrl}/app/beneficiary/getbycustomerid/${custid}`);
+    }
+    getbankaccount(){
+        let custid = JSON.parse(localStorage.getItem("currentUser"))["custid"];
+        return this.http.get<any>(`${config.apiUrl}/app/bankaccount/getbyid/${custid}`);
+    }
+    gettransaction(){
+        let custid = JSON.parse(localStorage.getItem("currentUser"))["custid"];
+        return this.http.get<any>(`${config.apiUrl}/app/wallet/transaction/getTransactionbycustomerid/${custid}`);
+
+    }
 }

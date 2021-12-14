@@ -1,20 +1,19 @@
 ﻿<!-- nav -->
 
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
-    
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+    <img [src]="imageSrc" width=60 height=50 class= "img1">
     <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" routerLink="/home" >Home</a>
         <a class="nav-item nav-link" style="right:0;position: absolute;" (click)="logout()">Logout</a>
         
     </div>
 </nav>
-
-<!-- main app container -->
+<!-- <app-table></app-table>  -->
+<!--main app container -->
 <div class="jumbotron">
     <div class="container">
         <div class="row">
             <div class="col-sm-6 offset-sm-3">
-             <!-- //   <img [src]="imageSrc" width=100 height=100 class= "img1"> . -->
                 <router-outlet></router-outlet>
             </div>
         </div>

@@ -1,13 +1,27 @@
-﻿
-<h1 *ngIf="cUser && cUser.name">Hi {{cUser.name}}!</h1>
-<p>Welcome to EzPay App</p>
-<!-- <img
-alt="logo"
-src="/assets/images.jpg"
-class="wallet"
-/> -->
+﻿    <h1 *ngIf="cUser && cUser.name" class="text-md-left">
+    Hi {{cUser.name}}!</h1>
+    <p>Welcome to U-Pay App</p>
 
-<img src="/assets/images.jpg" alt="">
+<h1>Explore Our Services</h1>
+<div class="container">
+    <div class="row">
+<a (click)=showbalance()><img [src] = wallSrc width=60 height=50 class= "img1" style="margin:40px 10px 10px 10px;" /></a>
+<a (click)=listbene()><img [src] = beneImgSrc width=60 height=50 class= "img1" style="margin:40px 10px 10px 10px;" /></a>
+<a (click)=getbankaccount()><img [src] = billIngSrc width=60 height=50 class= "img1" style="margin:40px 10px 10px 10px;" /></a>
+<a (click)=gettransaction()><img [src] = transSrc width=60 height=50 class= "img1" style="margin:40px 10px 10px 10px;" /></a>
+<img [src] = imageSrc width=60 height=50 class= "img1" style="margin:40px 10px 10px 10px;"/>
+</div></div>
+<!-- <div *ngIf="walletBal"> Wallet Balance = {{walletBal}}</div> -->
+
+
+<app-table [tableName]="tableName" [headers]="headers" [dataRows]="dataRows"></app-table>
+
+<!-- <div *ngIf="bankaccount">Bank account={{bankaccount}}</div> -->
+<!-- <div *ngIf="walletBal">
+<mat-table [dataSource]="dataSource">
+    <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: tableColumns"></mat-row>
+</mat-table></div> -->
 
 <!-- <router-outlet></router-outlet> 
 button show balance

@@ -9,7 +9,37 @@ import './_content/app.less';
 @Component({ selector: 'app', templateUrl: 'app.component.html' })
 export class AppComponent {
     currentUser: User;
-    imageSrc = '/assets/img/acc.png';
+    imageSrc = 'src/assets/images.jpg';
+    tableName = 'Table Test';
+    headers = ["A","B","C"];
+    dataRows = [
+        {
+            "A":"1",
+            "B":"qwerty",
+            "C":"End",
+
+        },
+        {
+            "A":"1",
+            "B":"qwerty",
+            "C":"End",
+        },
+        {
+            "A":"1",
+            "B":"qwerty",
+            "C":"End",
+        },
+        {
+            "A":"1",
+            "B":"qwerty",
+            "C":"End",
+        },
+        {
+            "A":"1",
+            "B":"qwerty",
+            "C":"End",
+        }
+    ];
 
     constructor(
         private router: Router,

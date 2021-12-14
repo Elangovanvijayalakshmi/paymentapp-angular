@@ -1,4 +1,4 @@
-﻿import { NgModule } from '@angular/core';
+﻿import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -13,6 +13,8 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { AlertComponent } from './_components';
+import { TableComponent } from '../../table/table.component';
+
 
 @NgModule({
     imports: [
@@ -21,11 +23,13 @@ import { AlertComponent } from './_components';
         HttpClientModule,
         appRoutingModule
     ],
+    schemas: [ CUSTOM_ELEMENTS_SCHEMA],
     declarations: [
         AppComponent,
         HomeComponent,
         LoginComponent,
         RegisterComponent,
+        TableComponent
        // AlertComponent
     ],
     providers: [

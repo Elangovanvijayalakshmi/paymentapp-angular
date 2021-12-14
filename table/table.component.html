@@ -1,0 +1,30 @@
+<style>
+    table,th,td{
+        border: 1px solid black;
+        text-align: center;
+    }
+    th,td{
+        padding: 5px;
+        text-align: center;
+    }
+    th{
+        background-color: blanchedalmond;
+    }
+</style>
+<div *ngIf="headers">
+<hr>
+<h5>{{tableName}}</h5>
+<table style="width: 100%">
+    <tr>
+        <th *ngFor="let column of headers">
+            {{column.title}}
+        </th>
+    </tr>
+    <tr *ngFor="let row of dataRows">
+        <td *ngFor="let column of headers">
+            {{row[column.data]}}
+        </td>
+        </tr>
+</table>
+
+</div>
