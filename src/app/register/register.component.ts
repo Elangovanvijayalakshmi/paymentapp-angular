@@ -17,9 +17,7 @@ export class RegisterComponent implements OnInit {
         private authenticationService: AuthenticationService,
         private userService: UserService,
         private alertService: AlertService
-    )
-    
-    {
+    ) {
         // redirect to home if already logged in
         if (this.authenticationService.currentUserValue) {
             this.router.navigate(['/']);
@@ -28,13 +26,13 @@ export class RegisterComponent implements OnInit {
 
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
-            Name:['',Validators.required],
-            Mobile : ['', Validators.required],
-            Password: ['',[Validators.required, Validators.minLength(6)]],
-            Ifsccode:['',Validators.required],
+            Name: ['', Validators.required],
+            Mobile: ['', Validators.required],
+            Password: ['', [Validators.required, Validators.minLength(6)]],
+            Ifsccode: ['', Validators.required],
             Accountno: ['', Validators.required],
-            Bankname: ['',Validators.required],
-            Balance: ['',  Validators.required]
+            Bankname: ['', Validators.required],
+            Balance: ['', Validators.required]
         });
         localStorage.setItem('currentUser', null);
     }
@@ -60,6 +58,6 @@ export class RegisterComponent implements OnInit {
                     this.submitted = false;
                     this.registerForm.reset;
                 });
-                
+
     }
 }

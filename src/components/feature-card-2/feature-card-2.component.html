@@ -1,0 +1,38 @@
+<style>
+  :host { 
+  display: contents; 
+}
+.feature-card {
+  width: 100%;
+  display: flex;
+  padding: var(--dl-space-space-twounits);
+  align-items: center;
+  flex-direction: column;
+}
+.image {
+  width: 75px;
+  object-fit: cover;
+}
+.text {
+  font-style: normal;
+  margin-top: var(--dl-space-space-unit);
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: var(--dl-space-space-unit);
+}
+.text1 {
+  color: var(--dl-color-gray-700);
+  text-align: center;
+}
+.text2 {
+  font-size: 0.75rem;
+  margin-top: var(--dl-space-space-unit);
+  font-weight: 500;
+}
+</style>
+<div class="feature-card" [ngClass]="rootClassName">
+  <img [attr.src]="image_src" [attr.alt]="image_alt" class="image" />
+  <h5 class="text">{{ title }}</h5>
+  <span class="text1">{{ description }}</span>
+  <span class="text2">{{ action }}</span>
+</div>

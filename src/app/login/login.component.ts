@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
             username: ['', Validators.required],
             password: ['', Validators.required]
         });
-
+        localStorage.removeItem('currentUser');
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
@@ -54,10 +54,10 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                    if(data){
-                        this.router.navigate(['/home']); 
+                    if (data) {
+                        this.router.navigate(['/home']);
                     }
-                    else{
+                    else {
                         alert("Incorrect Mobile Number or Password.");
                         this.loading = false;
                     }

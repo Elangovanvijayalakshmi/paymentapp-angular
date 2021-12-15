@@ -1,29 +1,252 @@
-﻿    <h1 *ngIf="cUser && cUser.name" class="text-md-left">
-    Hi {{cUser.name}}!</h1>
-    <p>Welcome to U-Pay App</p>
+﻿<style>
+    :host {
+        display: contents;
+    }
 
-<h1>Explore Our Services</h1>
-<div class="container">
-    <div class="row">
-<a (click)=showbalance()><img [src] = wallSrc width=60 height=50 class= "img1" style="margin:40px 10px 10px 10px;" /></a>
-<a (click)=listbene()><img [src] = beneImgSrc width=60 height=50 class= "img1" style="margin:40px 10px 10px 10px;" /></a>
-<a (click)=getbankaccount()><img [src] = billIngSrc width=60 height=50 class= "img1" style="margin:40px 10px 10px 10px;" /></a>
-<a (click)=gettransaction()><img [src] = transSrc width=60 height=50 class= "img1" style="margin:40px 10px 10px 10px;" /></a>
-<img [src] = imageSrc width=60 height=50 class= "img1" style="margin:40px 10px 10px 10px;"/>
-</div></div>
-<!-- <div *ngIf="walletBal"> Wallet Balance = {{walletBal}}</div> -->
+    .container {
+        width: 100%;
+        display: flex;
+        overflow: auto;
+        min-height: 100vh;
+        align-items: center;
+        flex-direction: column;
+    }
 
+    .header {
+        width: 100%;
+        display: flex;
+        position: relative;
+        max-width: var(--dl-size-size-maxwidth);
+        align-items: center;
+        padding-top: var(--dl-space-space-twounits);
+        padding-left: var(--dl-space-space-threeunits);
+        padding-right: var(--dl-space-space-threeunits);
+        padding-bottom: var(--dl-space-space-twounits);
+        justify-content: space-between;
+    }
+
+    .container1 {
+        flex: 0 0 auto;
+        width: auto;
+        height: auto;
+        display: flex;
+        position: relative;
+        align-items: space-between;
+        flex-direction: column;
+    }
+
+    .text {
+        top: -34px;
+        left: 75px;
+        color: #1420ff;
+        width: 100px;
+        height: 35px;
+        position: absolute;
+        box-shadow: 5px 5px 10px 0px #d4d4d4;
+    }
+
+    .container2 {
+        flex: 0 0 auto;
+        width: auto;
+        height: auto;
+        display: flex;
+        position: relative;
+        align-items: space-between;
+        flex-direction: column;
+    }
+
+    .wallet {
+        top: -39px;
+        left: -47px;
+        width: 95px;
+        height: 79px;
+        position: absolute;
+    }
+
+    .text02 {
+        top: 63px;
+        left: 97px;
+        position: absolute;
+    }
+
+    .text04 {
+        right: 128px;
+        bottom: 5px;
+        position: absolute;
+    }
+
+    .btn-group {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .menu-burger {
+        display: none;
+    }
+
+    .icon {
+        width: var(--dl-size-size-xsmall);
+        height: var(--dl-size-size-xsmall);
+        display: none;
+    }
+
+    .nav {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .container3 {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin-bottom: var(--dl-space-space-threeunits);
+        justify-content: space-between;
+    }
+
+    .image {
+        height: 2rem;
+    }
+
+    .icon02 {
+        width: var(--dl-size-size-xsmall);
+        height: var(--dl-size-size-xsmall);
+    }
+
+    .icon04 {
+        width: var(--dl-size-size-xsmall);
+        height: var(--dl-size-size-xsmall);
+        margin-right: var(--dl-space-space-twounits);
+    }
+
+    .icon06 {
+        width: var(--dl-size-size-xsmall);
+        height: var(--dl-size-size-xsmall);
+        margin-right: var(--dl-space-space-twounits);
+    }
+
+    .icon08 {
+        width: var(--dl-size-size-xsmall);
+        height: var(--dl-size-size-xsmall);
+    }
+
+    .image1 {
+        top: 25px;
+        right: 148px;
+        width: 42px;
+        height: 46px;
+        position: absolute;
+        object-fit: cover;
+    }
+
+    .features {
+        width: 100%;
+        display: flex;
+        padding: var(--dl-space-space-threeunits);
+        max-width: var(--dl-size-size-maxwidth);
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .text09 {
+        font-size: 3rem;
+        margin-bottom: var(--dl-space-space-twounits);
+    }
+
+    .text12 {
+        color: var(--dl-color-gray-700);
+        width: 70%;
+        font-size: 1.15rem;
+        text-align: center;
+    }
+
+    .container4 {
+        width: 100%;
+        display: grid;
+        grid-gap: var(--dl-space-space-twounits);
+        margin-top: var(--dl-space-space-fourunits);
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    @media(max-width: 991px) {
+        .icon {
+            display: flex;
+        }
+
+        .text09 {
+            text-align: center;
+        }
+
+        .text12 {
+            text-align: center;
+        }
+
+        .container4 {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @media(max-width: 767px) {
+        .header {
+            padding-left: var(--dl-space-space-twounits);
+            padding-right: var(--dl-space-space-twounits);
+        }
+
+        .btn-group {
+            display: none;
+        }
+
+        .menu-burger {
+            display: flex;
+        }
+
+        .features {
+            padding-left: var(--dl-space-space-twounits);
+            padding-right: var(--dl-space-space-twounits);
+        }
+
+        .text09 {
+            text-align: center;
+        }
+    }
+
+    @media(max-width: 479px) {
+        .header {
+            padding: var(--dl-space-space-unit);
+        }
+
+        .menu-mobile {
+            padding: 16px;
+        }
+
+        .features {
+            padding-top: var(--dl-space-space-twounits);
+            padding-left: var(--dl-space-space-unit);
+            padding-right: var(--dl-space-space-unit);
+            padding-bottom: var(--dl-space-space-twounits);
+        }
+
+        .container4 {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+<div class="features">
+    <h1 class="text09">
+        <span>Explore our services</span>
+        <br />
+        <span></span>
+    </h1>
+    <br>
+    <br>
+    <div class="container4">
+        <feature-card (click)=showbalance()></feature-card>
+        <feature-card-2 (click)=getbankaccount()></feature-card-2>
+        <feature-card-1 (click)=listbene()></feature-card-1>
+        <feature-card-3 (click)=gettransaction()></feature-card-3>
+    </div>
+</div>
 
 <app-table [tableName]="tableName" [headers]="headers" [dataRows]="dataRows"></app-table>
-
-<!-- <div *ngIf="bankaccount">Bank account={{bankaccount}}</div> -->
-<!-- <div *ngIf="walletBal">
-<mat-table [dataSource]="dataSource">
-    <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: tableColumns"></mat-row>
-</mat-table></div> -->
-
-<!-- <router-outlet></router-outlet> 
-button show balance
-balance show
--->

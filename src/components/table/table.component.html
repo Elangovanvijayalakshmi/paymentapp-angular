@@ -12,19 +12,20 @@
     }
 </style>
 <div *ngIf="headers">
-<hr>
+    <hr>
 <h5>{{tableName}}</h5>
-<table style="width: 100%">
-    <tr>
+<table width = "100%">
+    <tr width = "100%">
         <th *ngFor="let column of headers">
             {{column.title}}
         </th>
     </tr>
-    <tr *ngFor="let row of dataRows">
+    <tr width = "100%" *ngFor="let row of dataRows">
         <td *ngFor="let column of headers">
             {{row[column.data]}}
         </td>
         </tr>
 </table>
-
+<br>
+<hr>
 </div>

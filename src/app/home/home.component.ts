@@ -5,24 +5,13 @@ import { Router } from '@angular/router';
 import { User } from '@/_models';
 import { UserService, AuthenticationService } from '@/_services';
 import { FormGroup } from '@angular/forms';
-import { LoginComponent } from '@/login';
 
 @Component({ templateUrl: 'home.component.html' })
 export class HomeComponent implements OnInit {
     currentUser: User;
     registerForm: FormGroup;
-    cUser : JSON;
+    cUser: JSON;
     users = [];
-    imageSrc = 'src/assets/images.jpg';
-    beneImgSrc = 'src/assets/bene.png';
-    billIngSrc = 'src/assets/bill.png';
-    transSrc = 'src/assets/trans.png';
-    wallSrc = 'src/assets/wal.png';
-    walletBal:any[]=[];
-    beneficiary:any[]=[];
-    bankaccount:any[]=[];
-    transaction:any[]=[];
-    ba = [];
     tableName;
     headers;
     dataRows;
@@ -33,13 +22,12 @@ export class HomeComponent implements OnInit {
         private userService: UserService
     ) {
         this.currentUser = this.authenticationService.currentUserValue;
-        console.log( this.currentUser);
+        console.log(this.currentUser);
     }
 
     ngOnInit() {
-       // this.loadAllUsers();
-       this.users.push(this.currentUser);
-       this.cUser = JSON.parse(localStorage.getItem("currentUser"));
+        this.users.push(this.currentUser);
+        this.cUser = JSON.parse(localStorage.getItem("currentUser"));
         console.log(this.cUser["name"]);
     }
 
@@ -54,61 +42,84 @@ export class HomeComponent implements OnInit {
             .pipe(first())
             .subscribe(users => this.users = users);
     }
-    setTableNull(){
-        this.dataRows=null;
+
+    setTableNull() {
+        this.dataRows = null;
         this.tableName = null;
         this.headers = null;
     }
 
-    showbalance(){
+    showbalance() {
         this.authenticationService.showbalance().pipe(first()).subscribe(
-            x => {this.dataRows=x;
+            x => {
+                this.dataRows = x;
                 this.tableName = 'Wallet details';
                 this.headers = [
-                    {title:"Wallet ID",data:"walletid"},
-                    {title:"Balance Amount",data:"balance"}];
+                    { title: "Wallet ID", data: "walletid" },
+                    { title: "Balance Amount", data: "balance" }];
             });
     }
-    listbene(){
-       
+    listbene() {
+
         this.authenticationService.listbene().pipe(first()).subscribe(
-            x =>{
-                this.beneficiary=x;
-                this.dataRows=x;
+            x => {
+                this.dataRows = x;
                 this.tableName = 'Beneficiary Details';
                 this.headers = [
-                {title:"Customer ID",data:"custid"},
-                {title:"Customer Name",data:"name"},
-                {title:"Mobile Number",data:"mobilenumber"},
-                {title:"Account Number",data:"accountno"},
-                {title:"Beneficiary ID",data:"bid"}
-            ];
-            } );
+                    { title: "Customer ID", data: "custid" },
+                    { title: "Customer Name", data: "name" },
+                    { title: "Mobile Number", data: "mobilenumber" },
+                    { title: "Account Number", data: "accountno" },
+                    { title: "Beneficiary ID", data: "bid" }
+                ];
+            });
     }
-    getbankaccount(){
-        
+    getbankaccount() {
+
         this.authenticationService.getbankaccount().pipe(first()).subscribe(
-            x=> {this.bankaccount=x;
-            this.ba = this.bankaccount[1];
-            this.dataRows=x;
-            this.tableName = 'Bank Account Info';
-            this.headers = ["customer_id","accountno","bankname","ifsccode","balance"];
-            console.log(this.bankaccount);
+            x => {
+                this.dataRows = x;
+                this.tableName = 'Bank Account Info';
+                this.headers = [
+                    { title: "Customer ID", data: "customer_id" },
+                    { title: "Account Number", data: "accountno" },
+                    { title: "Bank Name", data: "bankname" },
+                    { title: "Ifsc Code", data: "ifsccode" },
+                    { title: "Balance ", data: "balance" }];
+            },
+            error => {
+                alert(error["error"]["message"]);
+            console.log(error);
         });
     }
-    gettransaction(){
-      
-        this.authenticationService.gettransaction().pipe(first()).subscribe(
-            x=>{this.transaction=x;
-                this.dataRows=x;
-                this.tableName="Transaction details";
-                this.headers=["transaction_id","transaction_type","transaction_date","wallet_id","amount","description"];
-                console.log(this.transaction);
+    gettransaction() {
 
-              
-       
+        this.authenticationService.gettransaction().pipe(first()).subscribe(
+            x => {
+                this.dataRows = x;
+                this.tableName = "Transaction details";
+                this.headers = [
+
+                    { title: "Transaction ID", data: "transaction_id" },
+                    { title: "Transaction Type", data: "transaction_type" },
+                    { title: "Transaction Date", data: "transaction_date" },
+                    { title: "Wallet ID", data: "wallet_id" },
+                    { title: "Amount ", data: "amount" },
+                    { title: "Description ", data: "description" }];
+
             }
         )
+    }
+    getbilldetails(){
+        // this.authenticationService.getbilldetails().pipe(first()).subscribe(
+        //     x=>{
+        //         this.dataRows=x;
+        //         this.tableName="Bill details";
+        //         this.headers=[
+        //             {title:}
+
+        //         ]
+        //     }
     }
 
 }

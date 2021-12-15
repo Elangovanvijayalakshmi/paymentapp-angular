@@ -1,33 +1,27 @@
-﻿<!-- nav -->
-
-<nav class="navbar navbar-expand navbar-dark bg-dark">
-    <img [src]="imageSrc" width=60 height=50 class= "img1">
+﻿<nav class="navbar navbar-expand navbar-dark bg-dark">
+    <img [src]="imageSrc" width=60 height=50 class="img1">
     <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="/home" >Home</a>
-        <a class="nav-item nav-link" style="right:0;position: absolute;" (click)="logout()">Logout</a>
-        
+        <a class="nav-item nav-link" routerLink="/home">
+            <h3 class="text" style="color:white;">U-Pay</h3>
+        </a>
+        <a *ngIf="currentUser" class="nav-item nav-link" style="right:20px;position: absolute;"
+            (click)="logout()">Logout</a>
+        <a *ngIf="currentUser" style="right:10%;position: absolute;" class="nav-item nav-link">
+             Welcome {{currentUser.name}}!</a>
+        <span class="nav-item nav-link" style="left:75px;top:38px;position: absolute;"><span>
+            One Payment Solution</span></span>
     </div>
 </nav>
-<!-- <app-table></app-table>  -->
-<!--main app container -->
 <div class="jumbotron">
     <div class="container">
         <div class="row">
-            <div class="col-sm-6 offset-sm-3">
-                <router-outlet></router-outlet>
-            </div>
+            <router-outlet></router-outlet>
         </div>
     </div>
 </div>
 
-
-
 <!-- credits -->
-
-
-    <footer style="text-align: right;">
-        
-        <div>Prepared By</div>
-         <div> Team 5</div>
-
-    </footer>
+<footer style="text-align: right;">
+    <div>Prepared By</div>
+    <div> Team 5</div>
+</footer>

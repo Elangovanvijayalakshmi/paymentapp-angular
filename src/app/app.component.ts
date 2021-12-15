@@ -10,36 +10,6 @@ import './_content/app.less';
 export class AppComponent {
     currentUser: User;
     imageSrc = 'src/assets/images.jpg';
-    tableName = 'Table Test';
-    headers = ["A","B","C"];
-    dataRows = [
-        {
-            "A":"1",
-            "B":"qwerty",
-            "C":"End",
-
-        },
-        {
-            "A":"1",
-            "B":"qwerty",
-            "C":"End",
-        },
-        {
-            "A":"1",
-            "B":"qwerty",
-            "C":"End",
-        },
-        {
-            "A":"1",
-            "B":"qwerty",
-            "C":"End",
-        },
-        {
-            "A":"1",
-            "B":"qwerty",
-            "C":"End",
-        }
-    ];
 
     constructor(
         private router: Router,

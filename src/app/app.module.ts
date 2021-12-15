@@ -3,17 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-// used to create fake backend
-import { fakeBackendProvider } from './_helpers';
-
 import { appRoutingModule } from './app.routing';
-import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
-import { AlertComponent } from './_components';
-import { TableComponent } from '../../table/table.component';
+import { TableComponent } from '../components/table/table.component';
+import { FeatureCardComponent } from '../components/feature-card/feature-card.component';
+import { FeatureCard1Component } from '../components/feature-card-1/feature-card-1.component';
+import { FeatureCard2Component } from '../components/feature-card-2/feature-card-2.component';
+import { FeatureCard3Component } from '../components/feature-card-3/feature-card-3.component';
+import { FeatureCard4Component } from '../components/feature-card-4/feature-card-4.component';
 
 
 @NgModule({
@@ -29,15 +29,14 @@ import { TableComponent } from '../../table/table.component';
         HomeComponent,
         LoginComponent,
         RegisterComponent,
-        TableComponent
-       // AlertComponent
+        TableComponent,
+        FeatureCardComponent,
+        FeatureCard1Component,
+        FeatureCard2Component,
+        FeatureCard3Component,
+        FeatureCard4Component
     ],
     providers: [
-       // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-       // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-
-        // provider used to create fake backend
-       // fakeBackendProvider
     ],
     bootstrap: [AppComponent]
 })
